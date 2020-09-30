@@ -5,7 +5,6 @@ plugins {
 
 android {
     compileSdkVersion buildConfig.compileSdk
-
     defaultConfig {
         applicationId "com.sschmitz.bathysphere"
         minSdkVersion buildConfig.minSdk
@@ -14,11 +13,34 @@ android {
         versionName buildConfig.version.name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+
+            resValue "string", "GOOGLE_SIGN_IN_CLIENT_ID", System.getenv("BATHYSPHERE_GOOGLE_SIGN_IN_CLIENT_ID")
+            resValue "string", "GOOGLE_SIGN_IN_CLIENT_SECRET", System.getenv("BATHYSPHERE_GOOGLE_SIGN_IN_CLIENT_SECRET")
+            resValue "string", "account_type", android.defaultConfig.applicationId
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        debug {
+            def password = System.getenv("BATHYSPHERE_KEYSTORE_PASSWORD")
+            storeFile file("$rootProject.projectDir/keystores/bathysphere.keystore")
+            storePassword password
+            keyAlias 'bathysphere'
+            keyPassword password
+        }
+
+        release {
+            def password = System.getenv("BATHYSPHERE_KEYSTORE_PASSWORD")
+            storeFile file("$rootProject.projectDir/keystores/bathysphere.keystore")
+            storePassword password
+            keyAlias 'bathysphere'
+            keyPassword password
         }
     }
     compileOptions {
@@ -39,6 +61,8 @@ android {
 }
 
 dependencies {
+    implementation project(':google-photos-api')
+
     implementation deps.kotlin.stdlib
     implementation deps.androidX.coreKtx
     implementation deps.androidX.appcompat

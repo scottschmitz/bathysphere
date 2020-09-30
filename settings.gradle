@@ -1,2 +1,3 @@
 rootProject.name = "Bathysphere"
 include ':app'
+include ':google-photos-api'
