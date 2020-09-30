@@ -25,7 +25,6 @@ object GoogleAuthJson {
     val refreshToken: String? = null
   )
 
-
   @JsonClass(generateAdapter = true)
   data class Response(
     @Json(name = "access_token")

@@ -7,7 +7,6 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-
 /*
  * https://developers.google.com/identity/protocols/OAuth2WebServer
  */

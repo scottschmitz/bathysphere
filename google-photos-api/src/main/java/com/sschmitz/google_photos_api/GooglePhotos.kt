@@ -3,7 +3,6 @@ package com.sschmitz.google_photos_api
 import android.content.Context
 import com.sschmitz.google_photos_api.model.MediaItemsJson.MediaItems
 import io.reactivex.Single
-import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
 

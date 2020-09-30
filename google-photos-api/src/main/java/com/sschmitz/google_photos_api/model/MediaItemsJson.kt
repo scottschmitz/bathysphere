@@ -68,7 +68,3 @@ class MediaItemsJson {
     val isoEquivalent: Int?
   )
 }
-
-
-
-

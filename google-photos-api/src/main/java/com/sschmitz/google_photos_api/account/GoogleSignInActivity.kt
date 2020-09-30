@@ -13,7 +13,7 @@ import com.sschmitz.google_photos_api.GooglePhotosScope
 import dagger.android.support.DaggerAppCompatActivity
 import timber.log.Timber
 
-abstract class GoogleSignInActivity: DaggerAppCompatActivity() {
+abstract class GoogleSignInActivity : DaggerAppCompatActivity() {
 
   companion object {
     private const val REQUEST_GOOGLE_SIGN_IN = 0

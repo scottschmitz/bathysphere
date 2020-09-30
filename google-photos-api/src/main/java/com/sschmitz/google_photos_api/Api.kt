@@ -12,7 +12,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
 
-
 class Api(
   private val applicationContext: Context,
   googleClientId: String,
@@ -56,7 +55,7 @@ class Api(
       .build()
   }
 
-  fun buildRetrofit(baseUrl: String, authenticated: Boolean) : Retrofit {
+  fun buildRetrofit(baseUrl: String, authenticated: Boolean): Retrofit {
     return Retrofit.Builder()
       .baseUrl(baseUrl)
       .client(if (authenticated) authenticatedOkHttpClient else unauthenticatedOkHttpClient)

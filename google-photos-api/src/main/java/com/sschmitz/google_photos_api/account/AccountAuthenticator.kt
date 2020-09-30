@@ -12,14 +12,20 @@ import android.os.IBinder
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import timber.log.Timber
 
-class AccountAuthenticator(applicationContext: Context) : AbstractAccountAuthenticator(applicationContext) {
+class AccountAuthenticator(
+  applicationContext: Context
+) : AbstractAccountAuthenticator(applicationContext) {
+
   companion object {
     private const val KEY_ACCESS_TOKEN = "google_access_token"
     private const val KEY_REFRESH_TOKEN = "google_refresh_token"
   }
 
   private val accountManager: AccountManager = AccountManager.get(applicationContext)
-  private val packageInfo: PackageInfo =  applicationContext.packageManager.getPackageInfo(applicationContext.packageName, 0)
+  private val packageInfo: PackageInfo = applicationContext.packageManager.getPackageInfo(
+    applicationContext.packageName,
+    0
+  )
   private val accountType = packageInfo.packageName
 
   fun hasAccount(): Boolean {
